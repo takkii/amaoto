@@ -1,0 +1,62 @@
+# frozen_string_literal: true
+
+# vim: filetype=ruby
+
+require 'java'
+
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'amaoto/version'
+
+# @!attribute
+class Amaz
+  def self.talk
+    # code here
+  end
+end
+
+Amaz.talk
+
+# @!attribute
+module Amaoto
+  def amehuri
+    puts ''
+    puts 'Change_log'.center(60, '-')
+    puts '
+
+    $ amaoto [-z|-a|-n|-o] file word
+    all|and|not|or| search.
+
+    '
+    puts 'Change_log'.center(60, '-')
+    puts ''
+  end
+
+  def sitosito
+    puts ''
+    puts 'Amaoto version is ' + Amaoto::VERSION
+    puts ''
+    puts 'Amaoto is Copyright Takayuki Kamiyama made in 2016.'
+    puts ''
+  end
+
+  module_function :amehuri, :sitosito
+end
+
+v = /\Aversion\z/
+ve = /\A[-][v]\z/
+
+one = ARGV[0]
+
+if one.nil?
+  Amaoto.sitosito
+elsif one.match?(v)
+  Amaoto.amehuri
+elsif one.match?(ve)
+  Amaoto.amehuri
+else
+  puts 'Please choose an option.'
+end
+
+__END__

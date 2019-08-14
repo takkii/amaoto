@@ -1,0 +1,322 @@
+# frozen_string_literal: true
+
+# vim: filetype=ruby
+
+require 'java'
+
+puts ''
+
+# @!attribute
+class Raiu
+  def rain
+    puts 'JRubyでmojiを実行してください！'
+  end
+end
+
+Raiu.new.rain
+
+puts ''
+
+print '>'
+
+begin
+  kasa = %w[unbre fibonacci exit fizz week].map!(&:freeze).freeze
+  lean = %w[rss result reader].map!(&:freeze).freeze
+  jisho = %w[moji exit].map!(&:freeze).freeze
+
+  while (line = ARGF.gets)
+
+    line.chomp!
+
+    if line.match?(kasa[0])
+      puts ''
+
+      # Hello class
+      class Hello
+        def self.world
+          puts RUBY_DESCRIPTION
+          puts 'Ruby_VERSION is ' + RUBY_VERSION
+        end
+      end
+
+      Hello.world
+      print '>'
+
+    elsif line.match?(kasa[1])
+      puts ''
+      begin
+        puts 'fibonacciのカウント回数を入力してください'
+        puts ''
+        print '>'
+        num = gets.chomp.to_i
+      rescue StandardError => e
+        p e
+        puts 'エラーです。数字を入力してください！'
+      end
+      puts ''
+      puts 'フィボナッチ数列を出力します! '
+      puts ''
+      lo = 1
+      hi = 1
+      print lo
+      print ' '
+      while hi < num
+        print hi
+        hi = lo + hi
+        lo = hi - lo
+        print ' '
+      end
+      puts ''
+      print '>'
+
+    elsif line.match?(kasa[2])
+      exit!
+
+    elsif line.match?(kasa[3])
+      puts ''
+      begin
+        puts 'FizzBizzのカウント回数を入力してください'
+        puts ''
+        print '>'
+        nu = gets.chomp.to_i
+      rescue StandardError => esx
+        p esx
+        puts 'エラーです。数字を入力してください！'
+      end
+      puts ''
+      puts 'FizzBizz問題の出力結果です!'
+      puts ''
+      (1..nu).each do |t|
+        if (t % 15).zero?
+          print 'FizzBizz'
+        elsif (t % 3).zero?
+          print 'Fizz'
+        elsif (t % 5).zero?
+          print 'Bizz'
+        else
+          print t
+        end
+        print ' '
+      end
+      puts ''
+      puts ''
+      print '>'
+
+    elsif line.match?(kasa[4])
+      puts ''
+      puts '日付の曜日をtrue,falseで判定します'
+      puts '半角数字で入力してください'
+      puts 'それでは、スタート！'
+      puts ''
+
+      begin
+        puts '調べたい年を入力してください'
+        print '>'
+        nen = gets.chomp.to_i
+      rescue StandardError => ee
+        p ee
+        puts 'エラーです。数字を確認してください！'
+      end
+
+      puts ''
+
+      begin
+        puts '調べたい月を入力してください'
+        print '>'
+        mon = gets.chomp.to_i
+      rescue StandardError => ey
+        p ey
+        puts 'エラーです。数字を確認してください！'
+      end
+
+      puts ''
+
+      begin
+        puts '調べたい日を入力してください'
+        print '>'
+        days = gets.chomp.to_i
+      rescue StandardError => ex
+        p ex
+        puts 'エラーです。数字を確認してください！'
+      end
+
+      puts ''
+
+      t = Time.local(nen, mon, days)
+
+      print '日曜日ですか？：'
+      puts t.sunday?
+      print '月曜日ですか？：'
+      puts t.monday?
+      print '火曜日ですか？：'
+      puts t.tuesday?
+      print '水曜日ですか？：'
+      puts t.wednesday?
+      print '木曜日ですか？：'
+      puts t.thursday?
+      print '金曜日ですか？：'
+      puts t.friday?
+      print '土曜日ですか？：'
+      puts t.saturday?
+
+      puts
+
+      print '>'
+
+    elsif line.match?(lean[0])
+
+      require 'rss'
+      require 'date'
+      require 'kconv'
+
+      begin
+        puts '調べたいRSSのURLを入力してください'
+        print '>'
+        URL = gets.chomp
+      rescue StandardError => es
+        p es
+        puts 'エラーです。URLを確認してください！'
+      end
+
+      rss = RSS::Parser.parse(URL)
+
+      rss.items.collect do |scale|
+        v = /[1][0-9]/
+        w = /[0][0-9]/
+        x = /[2][0-4]/
+        s = scale.pubDate.strftime '%H'
+
+        if s.match?(v)
+          print '#'
+          print ' '
+        elsif s.match?(w)
+          print '$'
+          print ' '
+        elsif s.match?(x)
+          print '@'
+          print ' '
+        end
+      end
+      puts ''
+      print '>'
+
+    elsif line.match?(lean[1])
+
+      begin
+        puts 'rssの出力結果を貼り付けてください'
+        print '>'
+        re = gets.chomp
+      rescue StandardError => ee
+        p ee
+        puts 'エラーです。数字を確認してください！'
+      end
+
+      puts 'ログの最近の投稿時間を判別します...'
+
+      str = re.split('')
+
+      puts ''
+      print '20～24時に投稿した回数は...'
+      print str.count('@')
+      puts ' 回あります'
+      print '0時から9時に投稿した回数は...'
+      print str.count('$')
+      puts ' 回あります'
+      print '10時から19時に投稿した回数は...'
+      print str.count('#')
+      puts ' 回あります'
+
+      puts ''
+      enum = [str.count('@'), str.count('$'), str.count('#')]
+
+      q = enum.max
+      t = enum.min
+
+      puts '最も多い数字は ' + q.to_s + ' 回です'
+      puts '最も少ない数字は ' + t.to_s + ' 回です'
+
+      puts ''
+      print '合計 '
+      print str.count('@') + str.count('$') + str.count('#')
+      puts ' 回です'
+      puts ''
+
+      print '>'
+
+    elsif line.match?(lean[2])
+      require 'rss'
+      require 'date'
+      require 'kconv'
+
+      begin
+        puts '調べたいRSSのURLを入力してください'
+        print '>'
+        URL = gets.chomp
+      rescue StandardError => eq
+        p eq
+        puts 'エラーです。URLを確認してください！'
+      end
+
+      rss = RSS::Parser.parse(URL)
+
+      puts ''
+
+      rss.items.collect do |scale|
+        puts scale.title
+      end
+
+      puts ''
+      print '>'
+    elsif line.match?(jisho[1])
+      exit!
+
+    elsif line.match?(jisho[0])
+
+      puts 'COMMAND'.center(60, '-')
+
+      puts '
+
+    unbre       JRubyでハローワールド
+
+    fibonacci   指定した数字のフィボナッチ数列を表示します
+
+    fizz        指定した数字のFizzBizz解答を表示します
+
+    week        曜日の判定プログラムです
+
+    rss         指定したRSSの投稿時間帯を判別します
+
+    reader      RSSの取得先からタイトル表示
+
+    result      rssの記号を個数としてカウントします
+
+
+    終了はexitを入力！
+
+    '
+
+      puts 'COMMAND'.center(60, '-')
+
+      print '>'
+
+    else
+      puts '言葉が違っています。mojiを確認願います。'
+      print '>'
+    end
+  end
+
+# Wainting Action Code exit!
+
+# Exception throw!
+rescue StandardError => e
+  p e
+  puts 'エラーです。文字列を確認してください！'
+  print '>'
+  retry
+
+# Ruby ensure is Java Exception of finally.
+ensure
+  puts '終了は exit を入力してください！'
+end
+
+__END__
