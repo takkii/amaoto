@@ -1,6 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/amaoto.svg)](https://badge.fury.io/rb/amaoto)[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![Gem Version](https://badge.fury.io/rb/amaoto.svg)](https://badge.fury.io/rb/amaoto)[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)[![Build Status](https://travis-ci.org/takkii/amaoto.svg?branch=master)](https://travis-ci.org/takkii/amaoto)![GitHub release](https://img.shields.io/github/release/takkii/amaoto.svg?style=flat)
 
-![雨音の画像](http://www.nyasocom.site/takkii/amaoto/raw/master/image/amaoto.gif)
+
+![ねこだるま](https://github.com/takkii/amaoto/blob/master/images/amaoto.gif)
 
 ## amaotoは、zinbei zinbeijettの派生です。 
 
