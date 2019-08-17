@@ -16,8 +16,5 @@ gem 'pry'
 gem 'rake'
 gem 'ruby-prof'
 gem 'solargraph'
-end
-
-platforms :jruby do
 gem 'tanraku'
 end
