@@ -3,6 +3,7 @@
 # vim: filetype=ruby
 
 require 'java'
+require 'readline'
 
 puts ''
 
@@ -23,8 +24,14 @@ begin
   kasa = %w[unbre fibonacci exit fizz week].map!(&:freeze).freeze
   lean = %w[rss result reader].map!(&:freeze).freeze
   jisho = %w[moji exit].map!(&:freeze).freeze
-
-  while (line = ARGF.gets)
+  
+  WORDS = (kasa + lean + jisho).map!(&:freeze).freeze
+  
+  Readline.completion_proc = proc {|word|
+    WORDS.grep(/\A#{Regexp.quote word}/)
+  }
+  
+  while (line = Readline.readline(""))
 
     line.chomp!
 
