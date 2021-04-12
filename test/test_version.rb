@@ -6,7 +6,7 @@ require File.join(File.dirname(__FILE__), '../lib/amaoto/version')
 class TestVersion < Test::Unit::TestCase
   def setup
     @versions = Amaoto::VERSION
-    @version = '1.0.7'
+    @version = '1.1.0'
   end
 
   def test_new
