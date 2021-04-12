@@ -2,7 +2,7 @@
 
 
 <div align="center">
-<img src="https://github.com/takkii/amaoto/blob/master/image/amaoto.gif" alt="画像" title="雨音">
+<img src="https://github.com/takkii/amaoto/blob/main/image/amaoto.gif" alt="画像" title="雨音">
 </div>
 
 ## amaotoは、zinbei zinbeijettの派生です。 
