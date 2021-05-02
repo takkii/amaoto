@@ -5,9 +5,11 @@
 <img src="https://github.com/takkii/amaoto/blob/main/image/amaoto.gif" alt="画像" title="雨音">
 </div>
 
-## What do you using Ruby enviroments ? 
+## What do you using Ruby environments ? 
 
-> Q. rbenv(win,mac,linux) or Homebrew(mac) or RubyInstaller(win) ...etc.
+> Q. rbenv (win, mac, linux) or Homebrew/linuxbrew (mac) or RubyInstaller2(win) ...etc.
+
+※ need java (jdk) and jruby env.
 
 ## What's amaoto ?
 
