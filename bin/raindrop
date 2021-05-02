@@ -24,14 +24,14 @@ begin
   kasa = %w[unbre fibonacci exit fizz week].map!(&:freeze).freeze
   lean = %w[rss result reader].map!(&:freeze).freeze
   jisho = %w[moji exit].map!(&:freeze).freeze
-  
+
   WORDS = (kasa + lean + jisho).map!(&:freeze).freeze
-  
-  Readline.completion_proc = proc {|word|
+
+  Readline.completion_proc = proc { |word|
     WORDS.grep(/\A#{Regexp.quote word}/)
   }
-  
-  while (line = Readline.readline(""))
+
+  while (line = Readline.readline(''))
 
     line.chomp!
 
@@ -86,8 +86,8 @@ begin
         puts ''
         print '>'
         nu = gets.chomp.to_i
-      rescue StandardError => esx
-        p esx
+      rescue StandardError => e
+        p e
         puts 'エラーです。数字を入力してください！'
       end
       puts ''
@@ -110,18 +110,23 @@ begin
       print '>'
 
     elsif line.match?(kasa[4])
+
       puts ''
-      puts '日付の曜日をtrue,falseで判定します'
+      puts 'WEEK'.center(60, '-')
+      puts ''
+      puts '入力した日付を曜日で判定します'
       puts '半角数字で入力してください'
       puts 'それでは、スタート！'
+      puts ''
+      puts 'WEEK'.center(60, '-')
       puts ''
 
       begin
         puts '調べたい年を入力してください'
-        print '>'
+        print '> '
         nen = gets.chomp.to_i
-      rescue StandardError => ee
-        p ee
+      rescue StandardError => e
+        p e
         puts 'エラーです。数字を確認してください！'
       end
 
@@ -129,10 +134,10 @@ begin
 
       begin
         puts '調べたい月を入力してください'
-        print '>'
+        print '> '
         mon = gets.chomp.to_i
-      rescue StandardError => ey
-        p ey
+      rescue StandardError => e
+        p e
         puts 'エラーです。数字を確認してください！'
       end
 
@@ -140,10 +145,10 @@ begin
 
       begin
         puts '調べたい日を入力してください'
-        print '>'
+        print '> '
         days = gets.chomp.to_i
-      rescue StandardError => ex
-        p ex
+      rescue StandardError => e
+        p e
         puts 'エラーです。数字を確認してください！'
       end
 
@@ -151,24 +156,33 @@ begin
 
       t = Time.local(nen, mon, days)
 
-      print '日曜日ですか？：'
-      puts t.sunday?
-      print '月曜日ですか？：'
-      puts t.monday?
-      print '火曜日ですか？：'
-      puts t.tuesday?
-      print '水曜日ですか？：'
-      puts t.wednesday?
-      print '木曜日ですか？：'
-      puts t.thursday?
-      print '金曜日ですか？：'
-      puts t.friday?
-      print '土曜日ですか？：'
-      puts t.saturday?
+      if t.sunday?
+        puts "#{nen}年#{mon}月#{days}日は、日曜日です。"
+        puts ''
+      elsif t.monday?
+        puts "#{nen}年#{mon}月#{days}日は、月曜日です。"
+        puts ''
+      elsif t.tuesday?
+        puts "#{nen}年#{mon}月#{days}日は、火曜日です。"
+        puts ''
+      elsif t.wednesday?
+        puts "#{nen}年#{mon}月#{days}日は、水曜日です。"
+        puts ''
+      elsif  t.thursday?
+        puts "#{nen}年#{mon}月#{days}日は、木曜日です。"
+        puts ''
+      elsif t.friday?
+        puts "#{nen}年#{mon}月#{days}日は、金曜日です。"
+        puts ''
+      elsif t.saturday?
+        puts "#{nen}年#{mon}月#{days}日は、土曜日です。"
+        puts ''
+      else
+        puts 'ありえない曜日を指しています...終了します! '
+        exit!
+      end
 
-      puts
-
-      print '>'
+      print '> '
 
     elsif line.match?(lean[0])
 
@@ -180,17 +194,17 @@ begin
         puts '調べたいRSSのURLを入力してください'
         print '>'
         URL = gets.chomp
-      rescue StandardError => es
-        p es
+      rescue StandardError => e
+        p e
         puts 'エラーです。URLを確認してください！'
       end
 
       rss = RSS::Parser.parse(URL)
 
       rss.items.collect do |scale|
-        v = /[1][0-9]/
-        w = /[0][0-9]/
-        x = /[2][0-4]/
+        v = /1[0-9]/
+        w = /0[0-9]/
+        x = /2[0-4]/
         s = scale.pubDate.strftime '%H'
 
         if s.match?(v)
@@ -213,8 +227,8 @@ begin
         puts 'rssの出力結果を貼り付けてください'
         print '>'
         re = gets.chomp
-      rescue StandardError => ee
-        p ee
+      rescue StandardError => e
+        p e
         puts 'エラーです。数字を確認してください！'
       end
 
@@ -259,8 +273,8 @@ begin
         puts '調べたいRSSのURLを入力してください'
         print '>'
         URL = gets.chomp
-      rescue StandardError => eq
-        p eq
+      rescue StandardError => e
+        p e
         puts 'エラーです。URLを確認してください！'
       end
 
@@ -303,6 +317,7 @@ begin
     '
 
       puts 'COMMAND'.center(60, '-')
+      puts ''
 
       print '>'
 
