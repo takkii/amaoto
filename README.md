@@ -7,9 +7,9 @@
 
 ## What do you using Ruby environments ? 
 
-> Q. rbenv (win, mac, linux) or Homebrew/linuxbrew (mac) or RubyInstaller2(win) ...etc.
+> Q. rbenv (win, mac, linux) or Homebrew/linuxbrew (mac/linux) or RubyInstaller2(win) ...etc.
 
-※ need java (jdk) and jruby env.
+_※ need java (jdk) and jruby env._
 
 ## What's amaoto ?
 
