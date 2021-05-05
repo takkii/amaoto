@@ -7,3 +7,5 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'java'
 require 'amaoto'
+
+__END__
